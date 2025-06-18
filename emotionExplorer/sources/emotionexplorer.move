@@ -19,12 +19,6 @@ public fun record_sentiment(
     sentiment: u8,
     content_hash: vector<u8>
 ) {
-    // input validation
-    assert!(sentiment <= 2, 0x01);
-    assert!(vector::length(&post_id) > 0 && vector::length(&post_id) <= 64, 0x02);
-    assert!(vector::length(&comment_id) > 0 && vector::length(&comment_id) <= 64, 0x03);
-    assert!(vector::length(&content_hash) == 32, 0x04);
-
     // create record
     let record = EmotionalRecord {
         id: object::new(ctx),
